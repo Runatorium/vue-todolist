@@ -37,6 +37,7 @@ createApp(
                     done: false,
                 }
                 this.todoList.push(newtask);
+                this.newtask="";
             },
             removeTask(index){
                 this.todoList.splice(index, 1)
