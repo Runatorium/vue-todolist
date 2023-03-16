@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todo list</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -13,19 +20,28 @@
     </header>
     <div id="app">
       <div class="text-center">
-        <input type="text" placeholder="inserisci una nuova task" />
-        <button>Aggiungi task</button>
+        <input
+          type="text"
+          placeholder="inserisci una nuova task"
+          v-model="newtask"
+          @keyup.enter="addtask"
+        />
+        <button @click="addtask">Aggiungi task</button>
       </div>
       <h2></h2>
       <div class="section d-flex">
         <div class="container d-flex">
           <ul>
             <li v-for="(task, index) in todoList">
-              <h2
+              <span
                 @click="changeflag(index)"
                 v-text="todoList[index].todo"
                 :class="{ completed: todoList[index].done }"
-              ></h2>
+              ></span>
+              <i
+                class="fa-sharp fa-solid fa-xmark"
+                @click="removeTask(index)"
+              ></i>
             </li>
           </ul>
         </div>

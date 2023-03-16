@@ -5,6 +5,7 @@ createApp(
     {
         data() {
             return {
+                newtask: "",
                 todoList: [
                     {
                         todo: 'prova1',
@@ -18,7 +19,7 @@ createApp(
                         todo: 'prova3',
                         done: true,
                     }
-                ]  
+                ], 
             } 
             
         },
@@ -29,8 +30,17 @@ createApp(
                 }else{
                     this.todoList[index].done = false
                 }
-                
-            }
+            },
+            addtask(){
+                let newtask ={
+                    todo: this.newtask,
+                    done: false,
+                }
+                this.todoList.push(newtask);
+            },
+            removeTask(index){
+                this.todoList.splice(index, 1)
+            },
         }
     }
 ).mount('#app')
